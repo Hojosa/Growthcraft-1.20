@@ -1,0 +1,40 @@
+plugins {
+    id 'net.neoforged.gradle'
+    id 'com.matthewprenger.cursegradle'
+}
+
+String mod_id = 'growthcraft_rice'
+
+
+minecraft {
+    mappings channel: mapping_channel, version: mapping_version
+    accessTransformer = file("src/main/resources/META-INF/accesstransformer.cfg")
+    runs {
+        data {
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
+
+            ideaModule "${rootProject.name}.${project.name}.main"
+
+            workingDirectory file('run')
+            args '--mod', mod_id, '--all', '--output', file("src/main/generated"), '--existing', file("src/main/resources")
+            mods {
+                '${mod_id}' { source sourceSets.main }
+            }
+        }
+    }
+}
+
+dependencies {
+    minecraft "net.neoforged:forge:${mc_version}-${forge_version}"
+
+    // JEI
+    compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}"))
+    compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}"))
+    runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}"))
+    
+    compileOnly fg.deobf("curse.maven:mekanism-${curseforge_mekanism}")
+    compileOnly fg.deobf("curse.maven:immersive-engineering-${curseforge_immersive_engineering}")
+    
+    implementation project(":core")
+}
