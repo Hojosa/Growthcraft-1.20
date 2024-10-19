@@ -1,18 +1,20 @@
 package growthcraft.apples.init;
 
 import growthcraft.apples.shared.Reference;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 
 public class GrowthcraftApplesTags {
 
-    private GrowthcraftApplesTags() {
+	private GrowthcraftApplesTags() {
         /* Prevent generation of public constructor */
     }
 
@@ -85,5 +87,18 @@ public class GrowthcraftApplesTags {
         //private static TagKey<EntityType<?>> tag(String name) {
         //    return TagKey.create(Registry.ENTITY_TYPE_REGISTRY, new ResourceLocation(Reference.MODID, name));
         //}
+    }
+    
+    public static class Biomes {
+    	
+    	public static final TagKey<Biome> HAS_APPLE_TREE = tag(Reference.UnlocalizedName.HAS_APPLE_TREE);
+    	
+        private static void init() {
+            // Do nothing, simply instantiate static variables
+        }
+        
+        private static TagKey<Biome> tag(String name) {
+            return TagKey.create(Registries.BIOME, new ResourceLocation(Reference.MODID, name));
+        }
     }
 }
