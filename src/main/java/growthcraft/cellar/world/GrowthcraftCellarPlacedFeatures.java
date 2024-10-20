@@ -18,6 +18,10 @@ import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 
 public class GrowthcraftCellarPlacedFeatures {
 	
+	private GrowthcraftCellarPlacedFeatures() {
+		/* Prevent generation of public constructor */
+	}
+	
     public static final ResourceKey<PlacedFeature> CORK_TREE_PLACED_KEY = createKey(Reference.UnlocalizedName.CORK_TREE + "_placed");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {

@@ -21,6 +21,10 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.trunkplacers.CherryTrunkPlacer;
 
 public class GrowthcraftApplesConfiguredFeatures {
+	
+	private GrowthcraftApplesConfiguredFeatures() {
+		/* Prevent generation of public constructor */
+	}
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> APPLE_TREE_KEY = registerKey(Reference.UnlocalizedName.APPLE_TREE);
 

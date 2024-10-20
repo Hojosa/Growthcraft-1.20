@@ -21,6 +21,10 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 public class GrowthcraftCellarConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> CORK_TREE_KEY = registerKey(Reference.UnlocalizedName.CORK_TREE);
     
+    private GrowthcraftCellarConfiguredFeatures() {
+    	/* Prevent generation of public constructor */
+	}
+    
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         register(context, CORK_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 // Trunk block
@@ -40,11 +44,11 @@ public class GrowthcraftCellarConfiguredFeatures {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Reference.MODID, name));
     }
 
-    private static <FeatureConfig extends FeatureConfiguration, FeatureType extends Feature<FeatureConfig>> void register(
+    private static <FEATURECONFIG extends FeatureConfiguration, FeatureType extends Feature<FEATURECONFIG>> void register(
             BootstapContext<ConfiguredFeature<?, ?>> context,
             ResourceKey<ConfiguredFeature<?, ?>> key,
             FeatureType feature,
-            FeatureConfig configuration
+            FEATURECONFIG configuration
     ) {
         context.register(key, new ConfiguredFeature<>(feature, configuration));
     }

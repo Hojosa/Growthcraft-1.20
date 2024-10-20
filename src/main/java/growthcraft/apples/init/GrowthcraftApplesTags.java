@@ -23,6 +23,7 @@ public class GrowthcraftApplesTags {
         Items.init();
         Fluids.init();
         EntityTypes.init();
+        Biomes.init();
     }
 
     public static class Blocks {
@@ -65,7 +66,7 @@ public class GrowthcraftApplesTags {
             /* Prevent generation of public constructor */
         }
 
-        private static void init() {
+        public  static void init() {
             // Do nothing, simply instantiate static variables
         }
 
@@ -91,9 +92,13 @@ public class GrowthcraftApplesTags {
     
     public static class Biomes {
     	
+    	private Biomes() {
+    		/* Prevent generation of public constructor */
+		}
+    	
     	public static final TagKey<Biome> HAS_APPLE_TREE = tag(Reference.UnlocalizedName.HAS_APPLE_TREE);
     	
-        private static void init() {
+        public static void init() {
             // Do nothing, simply instantiate static variables
         }
         

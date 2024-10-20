@@ -16,11 +16,11 @@ import net.minecraft.world.level.material.Fluid;
 public class GrowthcraftCellarTags {
 
     public static void init() {
-        GrowthcraftCellarTags.Blocks.init();
-        GrowthcraftCellarTags.Items.init();
-        GrowthcraftCellarTags.Fluids.init();
-        GrowthcraftCellarTags.EntityTypes.init();
-        GrowthcraftCellarTags.Biomes.init();
+        Blocks.init();
+        Items.init();
+        Fluids.init();
+        EntityTypes.init();
+        Biomes.init();
     }
 
     public static class Blocks {
@@ -81,6 +81,10 @@ public class GrowthcraftCellarTags {
     }
     
     public static class Biomes {
+    	
+    	private Biomes() {
+    		/* Prevent generation of public constructor */
+		}
     	
     	public static final TagKey<Biome> HAS_CORK_TREE = tag(Reference.UnlocalizedName.HAS_CORK_TREE);
     	

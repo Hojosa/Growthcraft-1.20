@@ -14,6 +14,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class GrowthcraftCellarBiomeModifiers {
 	
+	private GrowthcraftCellarBiomeModifiers() {
+		/* Prevent generation of public constructor */
+	}
+	
     public static final ResourceKey<BiomeModifier> ADD_CORK_TREE = registerKey("add_cork_tree");
 
     public static void bootstrap(BootstapContext<BiomeModifier> context) {

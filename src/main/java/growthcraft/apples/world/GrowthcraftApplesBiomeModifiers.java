@@ -14,6 +14,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class GrowthcraftApplesBiomeModifiers {
 	
+	private GrowthcraftApplesBiomeModifiers() {
+		/* Prevent generation of public constructor */
+	}
+	
     public static final ResourceKey<BiomeModifier> ADD_APPLE_TREE = registerKey("add_apple_tree");
 
     public static void bootstrap(BootstapContext<BiomeModifier> context) {

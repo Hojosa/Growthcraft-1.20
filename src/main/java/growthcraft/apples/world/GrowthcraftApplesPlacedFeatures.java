@@ -17,6 +17,10 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 
 public class GrowthcraftApplesPlacedFeatures {
+	
+	private GrowthcraftApplesPlacedFeatures() {
+		/* Prevent generation of public constructor */
+	}
 
     public static final ResourceKey<PlacedFeature> APPLE_TREE_PLACED_KEY = createKey(Reference.UnlocalizedName.APPLE_TREE + "_placed");
 
