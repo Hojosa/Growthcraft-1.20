@@ -44,11 +44,11 @@ public class GrowthcraftCellarConfiguredFeatures {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Reference.MODID, name));
     }
 
-    private static <FEATURECONFIG extends FeatureConfiguration, FeatureType extends Feature<FEATURECONFIG>> void register(
+    private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(
             BootstapContext<ConfiguredFeature<?, ?>> context,
             ResourceKey<ConfiguredFeature<?, ?>> key,
-            FeatureType feature,
-            FEATURECONFIG configuration
+            F feature,
+            FC configuration
     ) {
         context.register(key, new ConfiguredFeature<>(feature, configuration));
     }
