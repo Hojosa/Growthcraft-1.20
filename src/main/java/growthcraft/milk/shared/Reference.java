@@ -1,6 +1,10 @@
 package growthcraft.milk.shared;
 
 import growthcraft.lib.utils.ColorUtils;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.codehaus.plexus.util.StringUtils;
 
 public class Reference {
@@ -64,6 +68,7 @@ public class Reference {
         public static final String PROVOLONE = "provolone";
         public static final String RENNET = "rennet";
         public static final String RICOTTA = "ricotta";
+        public static final String SHOP_SIGN = "shop_sign";
         public static final String SKIM_MILK = "skim_milk";
         public static final String STARTER_CULTURE = "starter_culture";
         public static final String STOMACH = "stomach";

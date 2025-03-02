@@ -2,17 +2,13 @@ package growthcraft.core.datagen.providers;
 
 import java.util.concurrent.CompletableFuture;
 
-import growthcraft.bamboo.init.GrowthcraftBambooBlocks;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagEntry;
 import org.jetbrains.annotations.Nullable;
 
 import growthcraft.apiary.init.GrowthcraftApiaryBlocks;
 import growthcraft.apples.init.GrowthcraftApplesBlocks;
 import growthcraft.apples.init.GrowthcraftApplesTags;
+import growthcraft.bamboo.init.GrowthcraftBambooBlocks;
 import growthcraft.cellar.init.GrowthcraftCellarBlocks;
-import growthcraft.cellar.init.GrowthcraftCellarItems;
-import growthcraft.cellar.init.GrowthcraftCellarTags;
 import growthcraft.core.init.GrowthcraftBlocks;
 import growthcraft.core.init.GrowthcraftTags;
 import growthcraft.core.shared.Reference;
@@ -20,7 +16,9 @@ import growthcraft.milk.init.GrowthcraftMilkBlocks;
 import growthcraft.rice.init.GrowthcraftRiceBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagEntry;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
@@ -50,6 +48,8 @@ public class GrowthcraftCoreBlockTags extends BlockTagsProvider {
 				.add(TagEntry.optionalElement(new ResourceLocation("farmersdelight", "stove")))
 				.add(TagEntry.optionalElement(new ResourceLocation("decorative_blocks", "bonfire")))
 				.add(TagEntry.optionalElement(new ResourceLocation("decorative_blocks", "brazier")))  // would have liked to support additional_lights but their firepits aren't tagged and there's a ton of them.
+				.add(TagEntry.optionalTag(new ResourceLocation("farm_and_charm:allows_cooking")))
+				.add(TagEntry.optionalTag(new ResourceLocation("create:fan_heaters")))
 				.add(TagEntry.tag(BlockTags.CAMPFIRES.location()))
 				.add(TagEntry.tag(BlockTags.FIRE.location()));
 
@@ -93,7 +93,11 @@ public class GrowthcraftCoreBlockTags extends BlockTagsProvider {
 		.add(GrowthcraftApplesBlocks.APPLE_WOOD_LOG.get())
 		.add(GrowthcraftApplesBlocks.APPLE_WOOD_LOG_STRIPPED.get())
 		.add(GrowthcraftApplesBlocks.APPLE_WOOD.get())
-		.add(GrowthcraftApplesBlocks.APPLE_WOOD_STRIPPED.get());
+		.add(GrowthcraftApplesBlocks.APPLE_WOOD_STRIPPED.get())
+		.add(GrowthcraftCellarBlocks.CORK_WOOD_LOG.get())
+		.add(GrowthcraftCellarBlocks.CORK_WOOD_LOG_STRIPPED.get())
+		.add(GrowthcraftCellarBlocks.CORK_WOOD.get())
+		.add(GrowthcraftCellarBlocks.CORK_WOOD_STRIPPED.get());
 		tag(BlockTags.WOODEN_STAIRS)
 		.add(GrowthcraftApplesBlocks.APPLE_PLANK_STAIRS.get());
 		tag(BlockTags.WOODEN_FENCES)
@@ -105,7 +109,8 @@ public class GrowthcraftCoreBlockTags extends BlockTagsProvider {
 		tag(BlockTags.WOODEN_TRAPDOORS)
 		.add(GrowthcraftApplesBlocks.APPLE_PLANK_TRAPDOOR.get());
 		tag(BlockTags.LEAVES)
-		.add(GrowthcraftApplesBlocks.APPLE_TREE_LEAVES.get());
+		.add(GrowthcraftApplesBlocks.APPLE_TREE_LEAVES.get())
+		.add(GrowthcraftCellarBlocks.CORK_TREE_LEAVES.get());
 		tag(BlockTags.MINEABLE_WITH_AXE)
 		.add(GrowthcraftCellarBlocks.FERMENTATION_BARREL_OAK.get())
 		.add(GrowthcraftBlocks.ROPE_LINEN_ACACIA_FENCE.get())
@@ -122,7 +127,8 @@ public class GrowthcraftCoreBlockTags extends BlockTagsProvider {
 		.add(GrowthcraftBlocks.ROPE_LINEN_MANGROVE_FENCE.get())
 		.add(GrowthcraftBambooBlocks.BAMBOO_POST_VERTICAL.get())
 		.add(GrowthcraftBambooBlocks.BAMBOO_POST_HORIZONTAL.get())
-		.add(GrowthcraftMilkBlocks.CHURN.get());
+		.add(GrowthcraftMilkBlocks.CHURN.get())
+		.add(GrowthcraftMilkBlocks.getSignsAsArray());
 		tag(BlockTags.MINEABLE_WITH_PICKAXE)
 		.add(GrowthcraftCellarBlocks.BREW_KETTLE.get())
 		.add(GrowthcraftCellarBlocks.FRUIT_PRESS.get())
