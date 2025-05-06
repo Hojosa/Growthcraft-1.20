@@ -1,5 +1,7 @@
 package growthcraft.cellar.datagen.providers;
 
+import static growthcraft.lib.utils.FormatUtils.HAS_ITEM;
+
 import java.util.function.Consumer;
 
 import growthcraft.cellar.init.GrowthcraftCellarBlocks;
@@ -8,7 +10,6 @@ import growthcraft.cellar.init.GrowthcraftCellarTags;
 import growthcraft.cellar.shared.Reference;
 import growthcraft.core.datagen.shared.GrowthcraftRecipeBuilder;
 import growthcraft.core.init.config.BooleanFromConfigFileCondition;
-import growthcraft.core.init.config.OptionalFeatureCondition;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.PackOutput;
@@ -17,16 +18,12 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.NotCondition;
 import net.minecraftforge.common.crafting.conditions.TagEmptyCondition;
-
-import static growthcraft.lib.utils.FormatUtils.HAS_ITEM;
 
 public class GrowthcraftCellarRecipes extends RecipeProvider{
 
@@ -144,6 +141,12 @@ public class GrowthcraftCellarRecipes extends RecipeProvider{
 		.define('B', GrowthcraftCellarBlocks.BREW_KETTLE.get())
 		.group(Reference.MODID)
 		.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(GrowthcraftCellarBlocks.BREW_KETTLE.get()))
+		.save(consumer);
+        
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GrowthcraftCellarBlocks.CORK_COASTER.get(), 2)
+		.requires(GrowthcraftCellarItems.CORK_BARK.get())
+		.group(Reference.MODID)
+		.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(GrowthcraftCellarItems.CORK_BARK.get()))
 		.save(consumer);
 	}
 	
