@@ -52,7 +52,7 @@ public class CorkLog extends GrowthcraftLogBlock{
 	    	}
 	    	if(state.is(GrowthcraftCellarBlocks.CORK_WOOD.get())) {
 	    		popResource(context.getLevel(), context.getClickedPos().relative(context.getClickedFace(), 1), new ItemStack(GrowthcraftCellarItems.CORK_BARK.get()));
-	    		return GrowthcraftCellarBlocks.CORK_WOOD_STRIPPED.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+	    		return GrowthcraftCellarBlocks.CORK_WOOD_STRIPPED.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS)).setValue(REGROW, state.getValue(REGROW));
 	    	}
 	    }
 	return super.getToolModifiedState(state, context, toolAction, simulate);
