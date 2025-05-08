@@ -7,10 +7,10 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraftforge.common.world.BiomeModifier;
-import net.minecraftforge.common.world.ForgeBiomeModifiers;
+import net.minecraftforge.common.world.ForgeBiomeModifiers.AddFeaturesBiomeModifier;
 import net.minecraftforge.registries.ForgeRegistries;
+import static net.minecraft.world.level.levelgen.GenerationStep.Decoration.VEGETAL_DECORATION;
 
 public class GrowthcraftCellarBiomeModifiers {
 	
@@ -24,10 +24,10 @@ public class GrowthcraftCellarBiomeModifiers {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
         
-        context.register(ADD_CORK_TREE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+        context.register(ADD_CORK_TREE, new AddFeaturesBiomeModifier(
                 biomes.getOrThrow(GrowthcraftCellarTags.Biomes.HAS_CORK_TREE),
-                HolderSet.direct(placedFeatures.getOrThrow(GrowthcraftCellarPlacedFeatures.CORK_TREE_PLACED_KEY)),
-                GenerationStep.Decoration.VEGETAL_DECORATION));
+                HolderSet.direct(placedFeatures.getOrThrow(GrowthcraftCellarFeatures.Placed.CORK_TREE_PLACED)),
+                VEGETAL_DECORATION));
     }
 	
     private static ResourceKey<BiomeModifier> registerKey(String name) {
