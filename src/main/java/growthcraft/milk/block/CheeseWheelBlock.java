@@ -8,8 +8,6 @@ import growthcraft.core.init.GrowthcraftTags;
 import growthcraft.milk.block.entity.CheeseWheelBlockEntity;
 import growthcraft.milk.init.GrowthcraftMilkBlockEntities;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -34,6 +32,7 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+
 @Deprecated
 public class CheeseWheelBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -68,22 +67,6 @@ public class CheeseWheelBlock extends BaseEntityBlock {
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
         return GrowthcraftMilkBlockEntities.CHEESE_WHEEL_BLOCK_ENTITY.get().create(blockPos, blockState);
-    }
-
-//    @Nullable
-//    @Override
-//    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
-//        return createTickerHelper(
-//                blockEntityType,
-//                GrowthcraftMilkBlockEntities.CHEESE_WHEEL_BLOCK_ENTITY.get(),
-//                (worldLevel, pos, state, blockEntity) -> (blockEntity).tick()
-//        );    }
-    
-    @Override
-	public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-    	CheeseWheelBlockEntity blockEntity = (CheeseWheelBlockEntity) pLevel.getBlockEntity(pPos);
-    	System.out.println("el random tick");
-    	blockEntity.ageCheese(pLevel, pPos, pState, blockEntity);
     }
 
     @Override
