@@ -1,5 +1,14 @@
 package growthcraft.milk.block.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+import javax.annotation.ParametersAreNonnullByDefault;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import growthcraft.milk.GrowthcraftMilk;
 import growthcraft.milk.block.BaseCheeseWheel;
 import growthcraft.milk.block.CheeseWheelAgeableBlock;
@@ -17,18 +26,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
-public class CheeseWheelBlockEntity extends BlockEntity implements BlockEntityTicker<CheeseWheelBlockEntity> {
+public class CheeseWheelBlockEntity extends BlockEntity {
     private boolean aged;
     private int sliceCountTop;
     private int sliceCountBottom;
@@ -46,7 +47,7 @@ public class CheeseWheelBlockEntity extends BlockEntity implements BlockEntityTi
     public CheeseWheelBlockEntity(BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState) {
         super(blockEntityType, blockPos, blockState);
         this.tickClock = 0;
-        this.tickMax = 24000 * 3;
+        this.tickMax = 60;
 
         // TODO: Implement aging process
         this.aged = true;
@@ -54,15 +55,7 @@ public class CheeseWheelBlockEntity extends BlockEntity implements BlockEntityTi
         this.sliceCountTop = 0;
     }
 
-    public void tick() {
-        if (this.getLevel() != null) {
-            this.tick(this.getLevel(), this.getBlockPos(), this.getBlockState(), this);
-        }
-    }
-
-    @Override
-    @ParametersAreNonnullByDefault
-    public void tick(Level level, BlockPos blockPos, BlockState blockState, CheeseWheelBlockEntity blockEntity) {
+    public void ageCheese(Level level, BlockPos blockPos, BlockState blockState, CheeseWheelBlockEntity blockEntity) {
         if (level.isClientSide()) {
             return;
         }
@@ -85,7 +78,7 @@ public class CheeseWheelBlockEntity extends BlockEntity implements BlockEntityTi
             } else {
                 // This is probably broken cheese that was aged before 9.0.6
                 // lets start the aging process over again, and this time do it properly
-                this.tickMax = 3 * 24000;
+                this.tickMax = 60;
                 this.tickClock = 0;
             }
         }
