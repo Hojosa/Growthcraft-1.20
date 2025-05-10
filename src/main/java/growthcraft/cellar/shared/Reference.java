@@ -108,9 +108,19 @@ public class Reference {
         public static final String YEAST_LAGER_ETHEREAL = "yeast_lager_ethereal";
         public static final String TAG_HEATSOURCES = "heat_sources";
         public static final String KINDLING = "kindling";
-		public static final String TAG_BARLEY = "grain/barley";
+		public static final String TAG_ROASTED_GRAIN = "roasted_grain";
 		public static final String TAG_GRAPE_SEEDS = "seeds/grapes";
 		public static final String TAG_GRAPE_FRUITS = "fruits/grapes";
+		public static final String CORK_TREE = "cork_tree";
+        public static final String CORK_TREE_LEAVES = "cork_tree_leaves";
+        public static final String CORK_TREE_SAPLING = "cork_tree_sapling";
+        public static final String CORK_WOOD = "cork_wood";
+        public static final String CORK_WOOD_STRIPPED = "cork_wood_stripped";
+        public static final String CORK_WOOD_LOG = "cork_wood_log";
+        public static final String CORK_WOOD_LOG_STRIPPED = "cork_wood_log_stripped";
+		public static final String HAS_CORK_TREE = "has_cork_tree";
+		public static final String CORK_BARK = "cork_bark";
+		public static final String CORK_COASTER = "cork_coaster";
 
         private UnlocalizedName() {
             /* Disable Automatic Creation of Public Constructor */

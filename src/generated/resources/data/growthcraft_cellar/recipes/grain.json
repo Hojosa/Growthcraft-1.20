@@ -1,9 +1,26 @@
 {
-  "type": "minecraft:stonecutting",
-  "count": 1,
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "conditions": [
+    {
+      "type": "forge:tag_empty",
+      "tag": "forge:grain/barley"
+    }
+  ],
   "group": "growthcraft_cellar",
-  "ingredient": {
-    "item": "minecraft:wheat"
-  },
-  "result": "growthcraft_cellar:grain"
+  "ingredients": [
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "growthcraft_cellar:grain"
+  }
 }

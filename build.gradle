@@ -4,6 +4,7 @@ plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
     id "org.sonarqube" version "4.3.0.3225"
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
 version = "${minecraft_version}-${mod_version}"
@@ -101,6 +102,10 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:farmers-delight-${curseforge_farmers_delight}")
     runtimeOnly fg.deobf("curse.maven:immersive-engineering-${curseforge_immersive_engineering}")
     //runtimeOnly fg.deobf("curse.maven:serene-seasons-${curseforge_serene_seasons}")
+
+    //runtimeOnly fg.deobf("curse.maven:lets-do-farm-charm-1038103:6195373")
+    //runtimeOnly fg.deobf("curse.maven:architectury-api-419699:5084452")
+	//runtimeOnly fg.deobf("curse.maven:do-api-864599:5467352")
 
     // Runtime mods for testing, pick one
     //runtimeOnly fg.deobf("curse.maven:jei-${curseforge_jei}")

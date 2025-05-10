@@ -1,15 +1,32 @@
 package growthcraft.cellar.init;
 
-import growthcraft.cellar.block.*;
+import java.util.function.Supplier;
+
+import growthcraft.cellar.block.BrewKettleBlock;
+import growthcraft.cellar.block.CorkCoasterBlock;
+import growthcraft.cellar.block.CorkLog;
+import growthcraft.cellar.block.CultureJarBlock;
+import growthcraft.cellar.block.FermentationBarrelBlock;
+import growthcraft.cellar.block.FruitPressBlock;
+import growthcraft.cellar.block.FruitPressPistonBlock;
+import growthcraft.cellar.block.GrapeVineCropBlock;
+import growthcraft.cellar.block.GrapeVineFruitBlock;
+import growthcraft.cellar.block.GrapeVineLeavesCropBlock;
+import growthcraft.cellar.block.HopsCropBlock;
+import growthcraft.cellar.block.RoasterBlock;
 import growthcraft.cellar.shared.Reference;
+import growthcraft.cellar.world.feature.tree.CorkTreeGrower;
+import growthcraft.lib.block.GrowthcraftLogBlock;
+import growthcraft.lib.block.GrowthcraftSaplingBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.function.Supplier;
 
 public class GrowthcraftCellarBlocks {
 
@@ -91,6 +108,43 @@ public class GrowthcraftCellarBlocks {
 
     public static final RegistryObject<Block> HOPS_VINE = registerBlock(
             Reference.UnlocalizedName.HOPS_VINE, HopsCropBlock::new, true
+    );
+    
+    public static final RegistryObject<Block> CORK_TREE_SAPLING = registerBlock(
+            Reference.UnlocalizedName.CORK_TREE_SAPLING,
+            () -> new GrowthcraftSaplingBlock(
+                    new CorkTreeGrower()
+            )
+    );
+
+    public static final RegistryObject<Block> CORK_WOOD = registerBlock(
+            Reference.UnlocalizedName.CORK_WOOD,
+            GrowthcraftLogBlock::new
+    );
+
+    public static final RegistryObject<Block> CORK_WOOD_LOG = registerBlock(
+            Reference.UnlocalizedName.CORK_WOOD_LOG,
+            CorkLog::new
+    );
+
+    public static final RegistryObject<Block> CORK_WOOD_LOG_STRIPPED = registerBlock(
+            Reference.UnlocalizedName.CORK_WOOD_LOG_STRIPPED,
+            CorkLog::new
+    );
+
+    public static final RegistryObject<Block> CORK_WOOD_STRIPPED = registerBlock(
+            Reference.UnlocalizedName.CORK_WOOD_STRIPPED,
+            GrowthcraftLogBlock::new
+    );
+    
+    public static final RegistryObject<Block> CORK_TREE_LEAVES = registerBlock(
+            Reference.UnlocalizedName.CORK_TREE_LEAVES,
+            () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES))
+    );
+    
+    public static final RegistryObject<Block> CORK_COASTER = registerBlock(
+            Reference.UnlocalizedName.CORK_COASTER,
+            CorkCoasterBlock::new
     );
 
     private static RegistryObject<Block> registerBlock(String name, Supplier<Block> block) {
