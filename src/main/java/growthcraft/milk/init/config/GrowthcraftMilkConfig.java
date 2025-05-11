@@ -1,11 +1,12 @@
 package growthcraft.milk.init.config;
 
+import java.io.File;
+
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
+
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.loading.FMLPaths;
-
-import java.io.File;
 
 public class GrowthcraftMilkConfig {
 
@@ -32,6 +33,7 @@ public class GrowthcraftMilkConfig {
     private static ForgeConfigSpec.BooleanValue pancheonGuiEnabled;
     private static ForgeConfigSpec.BooleanValue stomachLootEnabled;
     private static ForgeConfigSpec.IntValue stomachLootChance;
+    private static ForgeConfigSpec.IntValue cheeseAgeTime;
 
     private static ForgeConfigSpec.BooleanValue cheeseDebugEnabled;
 
@@ -93,6 +95,10 @@ public class GrowthcraftMilkConfig {
         cheeseDebugEnabled = specBuilder
                 .comment("Set to true to add additional logging to debug the cheese wheel and curds blocks.")
                 .define(String.format("%s.%s", CATEGORY_CHEESE, "debugEnabled"), false);
+        
+        cheeseAgeTime = specBuilder
+		        .comment("Amount of random ticks it takes, for a cheese wheel to age. One random tick happens every ~1min.")
+		        .defineInRange(String.format("%s.%s", CATEGORY_CHEESE, "cheeseAgeTime"), 60, 0, 240);
 
     }
 
@@ -180,6 +186,15 @@ public class GrowthcraftMilkConfig {
      * exception: allow beverages even if the module is disabled
      */
     public static boolean getFeatureEnabledBeverages() { return featureEnabledBeverages.get(); }
+    
+    /**
+     * Retrieves the number of random ticks it takes, for a cheese wheel to age. 
+     *
+     * @return the amount of random ticks as an integer value, ranging from 0 to 240.
+     */
+    public static int getCheeseAgeTickTime() {
+        return cheeseAgeTime.get();
+    }
 
     /**
      * is the whole module disabled

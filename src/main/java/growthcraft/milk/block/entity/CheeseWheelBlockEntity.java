@@ -14,6 +14,7 @@ import growthcraft.milk.block.BaseCheeseWheel;
 import growthcraft.milk.block.CheeseWheelAgeableBlock;
 import growthcraft.milk.block.CheeseWheelBlock;
 import growthcraft.milk.init.GrowthcraftMilkBlockEntities;
+import growthcraft.milk.init.config.GrowthcraftMilkConfig;
 import growthcraft.milk.recipe.CheesePressRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -35,8 +36,7 @@ public class CheeseWheelBlockEntity extends BlockEntity {
     private int sliceCountBottom;
 
     private int tickClock;
-    //TODO: Make max aging for CheeseWheel come from a config
-    private int tickMax;
+    private int tickMax = GrowthcraftMilkConfig.getCheeseAgeTickTime();
 
     private Component customName;
 
@@ -47,9 +47,6 @@ public class CheeseWheelBlockEntity extends BlockEntity {
     public CheeseWheelBlockEntity(BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState) {
         super(blockEntityType, blockPos, blockState);
         this.tickClock = 0;
-        this.tickMax = 60;
-
-        // TODO: Implement aging process
         this.aged = true;
         this.sliceCountBottom = 4;
         this.sliceCountTop = 0;
@@ -78,7 +75,7 @@ public class CheeseWheelBlockEntity extends BlockEntity {
             } else {
                 // This is probably broken cheese that was aged before 9.0.6
                 // lets start the aging process over again, and this time do it properly
-                this.tickMax = 60;
+                this.tickMax = GrowthcraftMilkConfig.getCheeseAgeTickTime();
                 this.tickClock = 0;
             }
         }

@@ -77,6 +77,8 @@ public class BaseCheeseWheel extends BaseEntityBlock {
         return GrowthcraftMilkBlockEntities.CHEESE_WHEEL_BLOCK_ENTITY.get().create(blockPos, blockState);
     }
     
+    //randomTick is called once every ~1min. there is no guarantee that its exactly every 60sec.
+    //the value of CheeseWheelBlockEntity#maxTick should reflect this. default: 60
     @Override
 	public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
     	CheeseWheelBlockEntity blockEntity = (CheeseWheelBlockEntity) pLevel.getBlockEntity(pPos);
