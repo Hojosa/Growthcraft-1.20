@@ -1,6 +1,8 @@
 package growthcraft.lib.block;
 
+import growthcraft.core.block.RopeBlock;
 import growthcraft.core.block.entity.RopeBlockEntity;
+import growthcraft.core.init.GrowthcraftBlocks;
 import growthcraft.core.init.GrowthcraftTags;
 import growthcraft.lib.utils.BlockStateUtils;
 import net.minecraft.core.BlockPos;
@@ -295,13 +297,22 @@ public class GrowthcraftCropsRopeBlock extends BushBlock implements Bonemealable
         return InteractionResult.PASS;
     }
 
-    @Override
-    public boolean canSurvive(@NotNull BlockState state, LevelReader level, BlockPos pos) {
-        return true;
-    }
+    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+        BlockPos blockpos = pPos.below();
+        return pLevel.getBlockState(pPos.below()).canSustainPlant(pLevel, blockpos, Direction.UP, this) || pLevel.getBlockState(blockpos).is(this);
+     }
 
     public boolean canBeConnectedTo(BlockState state, BlockGetter world, BlockPos pos, Direction facing) {
         return BlockStateUtils.isRopeBlock(state);
     }
-
+    
+    //onRemove also gets called by setBlock, so we need to check if the block has actually been removed first and then we need to check if our crop is not the planted one
+    //if this is the case, we place a rope block
+    @Override
+    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pMovedByPiston) {
+    	super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
+    	if(!pNewState.is(pState.getBlock()) && pLevel.getBlockState(pPos.below()).is(this)) {
+    		pLevel.setBlock(pPos, ((RopeBlock)GrowthcraftBlocks.ROPE_LINEN.get()).getActualBlockState(pLevel, pPos), UPDATE_ALL);
+    	}
+    }
 }
