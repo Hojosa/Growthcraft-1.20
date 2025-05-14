@@ -296,10 +296,16 @@ public class GrowthcraftCropsRopeBlock extends BushBlock implements Bonemealable
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         return InteractionResult.PASS;
     }
-
+    
+    //if canSurvive returns false, the block will be removed. while this is great, in our case this prevents us from replacing the block with rope. 
+    //so we return always true, and replace our crop block with rope, if needed.
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
         BlockPos blockpos = pPos.below();
-        return pLevel.getBlockState(pPos.below()).canSustainPlant(pLevel, blockpos, Direction.UP, this) || pLevel.getBlockState(blockpos).is(this);
+        if(!(pLevel.getBlockState(pPos.below()).canSustainPlant(pLevel, blockpos, Direction.UP, this) || pLevel.getBlockState(blockpos).is(this))) {
+        	((Level)pLevel).setBlock(pPos, ((RopeBlock)GrowthcraftBlocks.ROPE_LINEN.get()).getActualBlockState((Level)pLevel, pPos), UPDATE_ALL);
+        	return true;
+        }
+        else return true;
      }
 
     public boolean canBeConnectedTo(BlockState state, BlockGetter world, BlockPos pos, Direction facing) {
