@@ -15,8 +15,7 @@ import java.util.List;
 public class AppleTreeLeaves extends LeavesBlock {
 
     private static final int APPLE_CHECK_AREA = 3;
-    private static final int MAX_APPLES_IN_AREA = 5;
-    private static final int TICK_DELAY = 1;
+    private static final int MAX_APPLES_IN_AREA = 2;
 
     public AppleTreeLeaves() {
         this(getInitProperties());
