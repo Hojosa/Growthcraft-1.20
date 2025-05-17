@@ -318,8 +318,8 @@ public class GrowthcraftCropsRopeBlock extends BushBlock implements Bonemealable
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pMovedByPiston) {
     	super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
 
-    	if(!pNewState.is(pState.getBlock()) && (pLevel.getBlockState(pPos.below()).is(this) || pLevel.getBlockState(pPos.below()).is(GrowthcraftBlocks.ROPE_LINEN.get()))) {
-    			pLevel.setBlock(pPos, ((RopeBlock)GrowthcraftBlocks.ROPE_LINEN.get()).getActualBlockState(pLevel, pPos), UPDATE_ALL);
+    	if(!pNewState.is(pState.getBlock()) && !pLevel.getBlockState(pPos.below()).canSustainPlant(pLevel, pPos.below(), Direction.UP, this)) {
+			pLevel.setBlock(pPos, ((RopeBlock)GrowthcraftBlocks.ROPE_LINEN.get()).getActualBlockState(pLevel, pPos), UPDATE_ALL);
     	}
     }
 }
