@@ -19,6 +19,7 @@ public class GrowthcraftCellarBiomeModifiers {
 	}
 	
     public static final ResourceKey<BiomeModifier> ADD_CORK_TREE = registerKey("add_cork_tree");
+    public static final ResourceKey<BiomeModifier> ADD_CORK_TREE_RARE = registerKey("add_cork_tree_rare");
 
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -27,6 +28,11 @@ public class GrowthcraftCellarBiomeModifiers {
         context.register(ADD_CORK_TREE, new AddFeaturesBiomeModifier(
                 biomes.getOrThrow(GrowthcraftCellarTags.Biomes.HAS_CORK_TREE),
                 HolderSet.direct(placedFeatures.getOrThrow(GrowthcraftCellarFeatures.Placed.CORK_TREE_PLACED)),
+                VEGETAL_DECORATION));
+        
+        context.register(ADD_CORK_TREE_RARE, new AddFeaturesBiomeModifier(
+                biomes.getOrThrow(GrowthcraftCellarTags.Biomes.HAS_CORK_TREE_RARE),
+                HolderSet.direct(placedFeatures.getOrThrow(GrowthcraftCellarFeatures.Placed.CORK_TREE_PLACED_RARE)),
                 VEGETAL_DECORATION));
     }
 	

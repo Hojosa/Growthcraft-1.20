@@ -30,6 +30,9 @@ import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.minecraft.world.level.levelgen.placement.SurfaceWaterDepthFilter;
 
 public class GrowthcraftCellarFeatures {
+	private GrowthcraftCellarFeatures() {
+		/* Prevent generation of public constructor */
+	}
 
 	public static class Configured {
 		private Configured() {
@@ -71,6 +74,7 @@ public class GrowthcraftCellarFeatures {
 		
 		public static final ResourceKey<PlacedFeature> CORK_TREE_CHECKED = createKey(Reference.UnlocalizedName.CORK_TREE);
 		public static final ResourceKey<PlacedFeature> CORK_TREE_PLACED = createKey("trees_cork");
+		public static final ResourceKey<PlacedFeature> CORK_TREE_PLACED_RARE = createKey("trees_cork_rare");
 		
 		public static void init(BootstapContext<PlacedFeature> context) {
 			HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -79,6 +83,14 @@ public class GrowthcraftCellarFeatures {
 			context.register(CORK_TREE_PLACED, new PlacedFeature(features.getOrThrow(Configured.TREES_RUBBERWOOD), List.of(
 					RarityFilter.onAverageOnceEvery(10),
 					PlacementUtils.countExtra(0, 0.25f, 1),
+                    InSquarePlacement.spread(),
+                    SurfaceWaterDepthFilter.forMaxDepth(0),
+                    PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                    BiomeFilter.biome())));
+			
+			context.register(CORK_TREE_PLACED_RARE, new PlacedFeature(features.getOrThrow(Configured.TREES_RUBBERWOOD), List.of(
+					RarityFilter.onAverageOnceEvery(30),
+					PlacementUtils.countExtra(0, 0.2f, 1),
                     InSquarePlacement.spread(),
                     SurfaceWaterDepthFilter.forMaxDepth(0),
                     PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
