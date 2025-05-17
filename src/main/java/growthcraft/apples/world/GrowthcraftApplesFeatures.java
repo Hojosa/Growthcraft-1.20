@@ -46,7 +46,7 @@ public class GrowthcraftApplesFeatures {
 		
 		public static final ResourceKey<ConfiguredFeature<?, ?>> APPLE_TREE = registerKey(Reference.UnlocalizedName.APPLE_TREE);
 		public static final ResourceKey<ConfiguredFeature<?, ?>> BIG_APPLE_TREE = registerKey(Reference.UnlocalizedName.BIG_APPLE_TREE);
-		public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_APPLE = registerKey("trees_cork");
+		public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_APPLE = registerKey("trees_apple");
 		
 		
 		public static void init(BootstapContext<ConfiguredFeature<?, ?>> context) {
