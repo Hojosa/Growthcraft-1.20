@@ -148,12 +148,13 @@ public class GrowthcraftCellarRecipes extends RecipeProvider{
 		.group(Reference.MODID)
 		.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(GrowthcraftCellarItems.CORK_BARK.get()))
 		.save(consumer);
-        
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GrowthcraftCellarItems.HOPS_SEED.get(), 2)
 		.requires(GrowthcraftCellarItems.HOPS.get())
 		.group(Reference.MODID)
 		.unlockedBy(HAS_ITEM, InventoryChangeTrigger.TriggerInstance.hasItems(GrowthcraftCellarItems.CORK_BARK.get()))
 		.save(consumer);
+
 	}
 	
     @Override

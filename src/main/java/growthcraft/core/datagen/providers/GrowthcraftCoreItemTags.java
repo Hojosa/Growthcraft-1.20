@@ -95,7 +95,13 @@ public class GrowthcraftCoreItemTags extends ItemTagsProvider{
 		.add(GrowthcraftApplesBlocks.APPLE_PLANK_SLAB.get().asItem());
 		tag(ItemTags.LOGS)
 		.add(GrowthcraftApplesBlocks.APPLE_WOOD_LOG.get().asItem())
-		.add(GrowthcraftApplesBlocks.APPLE_WOOD_LOG_STRIPPED.get().asItem());
+		.add(GrowthcraftApplesBlocks.APPLE_WOOD_LOG_STRIPPED.get().asItem())
+		.add(GrowthcraftApplesBlocks.APPLE_WOOD.get().asItem())
+		.add(GrowthcraftApplesBlocks.APPLE_WOOD_STRIPPED.get().asItem())
+		.add(GrowthcraftCellarBlocks.CORK_WOOD_LOG.get().asItem())
+		.add(GrowthcraftCellarBlocks.CORK_WOOD_LOG_STRIPPED.get().asItem())
+		.add(GrowthcraftCellarBlocks.CORK_WOOD.get().asItem())
+		.add(GrowthcraftCellarBlocks.CORK_WOOD_STRIPPED.get().asItem());
 		tag(ItemTags.WOODEN_STAIRS)
 		.add(GrowthcraftApplesBlocks.APPLE_PLANK_STAIRS.get().asItem());
 		tag(ItemTags.WOODEN_FENCES)
@@ -108,6 +114,15 @@ public class GrowthcraftCoreItemTags extends ItemTagsProvider{
 		.add(GrowthcraftApplesBlocks.APPLE_PLANK_TRAPDOOR.get().asItem());
 		tag(ItemTags.LEAVES)
 		.add(GrowthcraftApplesBlocks.APPLE_TREE_LEAVES.get().asItem());
+		tag(ItemTags.LOGS_THAT_BURN)
+		.add(GrowthcraftApplesBlocks.APPLE_WOOD_LOG.get().asItem())
+		.add(GrowthcraftApplesBlocks.APPLE_WOOD_LOG_STRIPPED.get().asItem())
+		.add(GrowthcraftApplesBlocks.APPLE_WOOD.get().asItem())
+		.add(GrowthcraftApplesBlocks.APPLE_WOOD_STRIPPED.get().asItem())
+		.add(GrowthcraftCellarBlocks.CORK_WOOD_LOG.get().asItem())
+		.add(GrowthcraftCellarBlocks.CORK_WOOD_LOG_STRIPPED.get().asItem())
+		.add(GrowthcraftCellarBlocks.CORK_WOOD.get().asItem())
+		.add(GrowthcraftCellarBlocks.CORK_WOOD_STRIPPED.get().asItem());
 		
 		GrowthcraftCellarItems.ITEMS.getEntries().forEach(grain -> {
 			if (grain.getId().getPath().contains("grain") && ! grain.equals(GrowthcraftCellarItems.GRAIN)) {

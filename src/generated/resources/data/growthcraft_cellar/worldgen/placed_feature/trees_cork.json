@@ -1,6 +1,10 @@
 {
-  "feature": "growthcraft_cellar:cork_tree",
+  "feature": "growthcraft_cellar:trees_cork",
   "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 10
+    },
     {
       "type": "minecraft:count",
       "count": {
@@ -8,7 +12,7 @@
         "distribution": [
           {
             "data": 0,
-            "weight": 49
+            "weight": 3
           },
           {
             "data": 1,
@@ -30,18 +34,6 @@
     },
     {
       "type": "minecraft:biome"
-    },
-    {
-      "type": "minecraft:block_predicate_filter",
-      "predicate": {
-        "type": "minecraft:would_survive",
-        "state": {
-          "Name": "growthcraft_cellar:cork_tree_sapling",
-          "Properties": {
-            "stage": "0"
-          }
-        }
-      }
     }
   ]
 }
